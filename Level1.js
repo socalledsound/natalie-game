@@ -1,10 +1,10 @@
 class Level1 {
-    constructor(player, backdrop1, backdrop2, open, emptyTree, idleMush, mushSprout, mushPulse, 
+    constructor(backdrop1, backdrop2, open, emptyTree, idleMush, mushSprout, mushPulse, 
         canvasWidth, canvasHeight, imgSize, mushSound) {
         this.mushrooms = []
         // array of booleans telling whether the mushroom has sprouted yet
         this.interact = []
-        this.player = player
+        // this.player = player
         this.backdrop1 = backdrop1
         this.backdrop2 = backdrop2
         this.open = open

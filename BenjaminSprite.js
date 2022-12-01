@@ -5,10 +5,14 @@ class BenjaminSprite {
         this.idleRight = idleRight
         this.left = left
         this.right = right
+        this.w = 100
+        this.h = 100
         this.imgCount = 0
         this.imgSize = size
         this.mapSize = mapSize
         this.pos = createVector(x, y)
+        this.centerXOffset = this.w/1.5
+        this.centerYOffset = this.h/1.5
         this.vel = createVector(0,0)  
         this.acc = createVector(0,0)
         this.friction = 0.7
@@ -16,6 +20,8 @@ class BenjaminSprite {
         // 1 = idle right, 2 = walking right
         this.dir = -1
         this.gravity = 0.1
+        this.rotationValue = 0
+      
     }
 
     bounceEdges() {
@@ -68,6 +74,12 @@ class BenjaminSprite {
     }
 
     render(){
+
+
+      push()
+
+      rotate(this.rotatationValue)
+
       if (keyIsDown(LEFT_ARROW)) {
         this.dir = -2
         image(this.left[floor(this.imgCount) %
@@ -91,7 +103,7 @@ class BenjaminSprite {
                 this.pos.x, this.pos.y, this.imgSize, 
                 this.imgSize)
       }
-      
+      pop()
     // push()
     // translate(this.pos.x, this.pos.y/2)
     // rotate()
@@ -99,6 +111,12 @@ class BenjaminSprite {
     // pop()
       
       
+    }
+
+    reposition(x, y, theta){
+      this.pos.x = x - this.centerXOffset
+      this.pos.y = y - this.centerYOffset
+      this.rotationValue = theta
     }
 
     collide(ob) {
@@ -112,5 +130,7 @@ class BenjaminSprite {
       this.vel.mult(this.friction)
       this.pos.add(this.vel)
       this.imgCount+= 0.165
+      
     }
+
 }

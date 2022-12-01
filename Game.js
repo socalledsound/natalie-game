@@ -35,20 +35,20 @@ class Game {
                                      this.rightWalk, this.canvasWidth/2,
                                      this.canvasHeight/2 + 130, 150)
     
-    this.levels[0] = new Level1(this.player, this.backdrop1,
+    this.levels[0] = new Level1(this.backdrop1,
                                 this.backdrop2, this.open, this.emptyTree, 
                                 this.idleMush, this.mushSprout,
                                 this.mushPulse, this.canvasWidth, 
                                 this.canvasHeight, this.imgSize,
                                 this.mushSound)
     
-    this.levels[1] = new Level2(this.player, this.tunnel1, this.tunnel2,
+    this.levels[1] = new Level2(this.tunnel1, this.tunnel2,
                                 this.sleepHedge, this.madHedge,
                                 this.canvasWidth, this.canvasHeight,
                                 this.imgSize)
 
     this.levels[0].init()
-    this.levels[1].init()
+    this.levels[1].init(this.player)
     this.level = this.levels[this.currentLevel]
   }
   
@@ -79,7 +79,9 @@ class Game {
   
   update(){
     this.player.update()
-    this.level.update()
+    //console.log(this.player)
+    this.level.update(this.player)
+
   }
   
   drawEndScreen() {

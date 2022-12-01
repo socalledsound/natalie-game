@@ -30,7 +30,7 @@ let benjamin
 // mapSize must be multiples of 700
 const mapSize = 1400
 let benPos
-let scroll
+let scroll = {x: 0, y: 0}
 let sky, murky, murky2, startScreen
 
 let game
@@ -71,7 +71,7 @@ function preload() {
 }
 // i think you should do the image getting inside function setup(){}
 function startGame(){
-  backSound.play()
+  //backSound.play()
   // CK small thing here -- I'd use global variables like const numIdleImages = 12 here
   // also, it might make sense to have objects that hold these image arrays, just for
   // simplicity.  so, like, 
